@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <random>
 
 #include "cxxopts.hpp"
 #include "staticmsgs.hpp"
@@ -10,6 +11,14 @@
 #include "Tick.hpp"
 
 #include "YahooFinanceFileTickManager.hpp"
+
+#include "Strategy.hpp"
+#include "RandomBuySellStrategy.hpp"
+
+#include "TradeManager.hpp"
+#include "PaperTradeManager.hpp"
+
+#include "VirtualBank.hpp"
 
 
 int main(int argc, char** argv){
@@ -70,11 +79,42 @@ int main(int argc, char** argv){
    	//tick_manager = new RandomTickManager();
    	tick_manager = new YahooFinanceFileTickManager(input_file);
 
+
+   	/* Initialise strategy */
+   	//seed rand()
+   	srand((unsigned int)time(NULL));
+   	Strategy * strategy;
+   	strategy = new RandomBuySellStrategy();
+
+   	/*Initialise a virtual bank*/
+   	VirtualBank * virtual_bank;
+   	long double bank_balance = 100000;
+   	virtual_bank = new VirtualBank(bank_balance);
+
+   	/* Initialise trade manager */
+   	TradeManager * trade_manager;
+   	trade_manager = new PaperTradeManager(virtual_bank);
+
+   	Tick last_traded_tick;
    	/* Start the core event-loop */
-   	Tick t = tick_manager->getNextTick();
-   	t.dump_tick();
+   	while(tick_manager->hasNextTick()){
+   		Tick t = tick_manager->getNextTick();
+   		last_traded_tick = t;
+   		//t.dump();
+
+   		Trade tr = strategy->processTick(t);
+   		trade_manager->performTrade(tr);
+   	}
+
+   	trade_manager->squareOff(last_traded_tick);
+   	trade_manager->dumpTrades();
+
+   	std::string final_bank_balance = std::to_string(virtual_bank->getBankBalance());
+   	std::string profit_or_loss = std::to_string(virtual_bank->getBankBalance() - bank_balance);
 
 
+   	std::cout<<"Total Bank Balance: "<<final_bank_balance<<std::endl;
+   	std::cout<<"Profit or loss: "<<profit_or_loss<<std::endl;
 
 	return 0;
 }

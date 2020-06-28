@@ -4,15 +4,15 @@
 class Tick{
 public:
 
-	float open;
-	float low;
-	float close;
-	float high;
-	float adjust_close;
-	float volume;
-	int time;
+	long double open;
+	long double low;
+	long double close;
+	long double high;
+	long double adjust_close;
+	long int volume;
+	long int time;
 
-	void dump_tick();
+	void dump();
 };
 
 

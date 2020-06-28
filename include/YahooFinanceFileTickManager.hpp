@@ -11,6 +11,7 @@ public:
 	int tick_counter;
 	std::vector<Tick> tick_store;
 	Tick parseTickfromString(std::string line);
-	int parseDatefromString(std::string date);
+	long int parseDatefromString(std::string date);
+	bool hasNextTick();
 
 };
