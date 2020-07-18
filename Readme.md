@@ -1,5 +1,5 @@
-# Aku - Toy Backtesting/Trading Engine
 ![aku](https://github.com/flouthoc/aku/blob/test/assets/aku.png)
+# Aku - Toy Backtesting/Trading Engine
 Aku is a toy backtesting/trading engine with some very basic interfaces. Its easy to extend aku by providing custom implementation of interfaces.
 ```bash
 Usage:
