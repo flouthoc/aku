@@ -12,6 +12,11 @@ Usage:
   -h, --help        Print usage
  ```
 
+### Build 
+```base
+make
+```
+
 ### Key Terms
     - Tick: A standard stock candle.
     - TickManager: Responsible for Fetching Ticks from any source e.g Web/Database
