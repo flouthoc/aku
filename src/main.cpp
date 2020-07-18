@@ -5,11 +5,10 @@
 #include "cxxopts.hpp"
 #include "staticmsgs.hpp"
 
-
-#include "RandomTickManager.hpp"
 #include "TickManager.hpp"
 #include "Tick.hpp"
 
+#include "RandomTickManager.hpp"
 #include "YahooFinanceFileTickManager.hpp"
 
 #include "Strategy.hpp"
@@ -23,17 +22,15 @@
 
 int main(int argc, char** argv){
 
-	cxxopts::Options options("Aku v0.0.1", "Backtesting Engine");
+	cxxopts::Options options("Aku v0.0.1", "Aku - Toy Backtesting/Trading Engine");
 	
 	/* Everything related to command-line options */
 
 	options.add_options()
-        ("b,bar", "Param bar", cxxopts::value<std::string>())
         ("i,input", "Input csv file, will read ticks from here", cxxopts::value<std::string>())
         ("o,output", "Output csv file, will output trade / results here", 
         	cxxopts::value<std::string>()->default_value("output.csv"))
         ("d,debug", "Enable debugging", cxxopts::value<bool>()->default_value("false"))
-        ("f,foo", "Param foo", cxxopts::value<int>()->default_value("10"))
         ("h,help", "Print usage")
     ;
 
