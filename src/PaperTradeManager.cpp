@@ -10,13 +10,13 @@ PaperTradeManager::PaperTradeManager(VirtualBank *v_bank){
 	this->holdQuantity = 0;
 }
 
-int PaperTradeManager::performBuy(Trade trade){
+void PaperTradeManager::performBuy(Trade trade){
 	std::cout<<"Paper trade buy"<<std::endl;
 	this->virtual_bank->bankDebit(trade.quantity*trade.tick.close);
 	this->holdQuantity += trade.quantity;
 }
 
-int PaperTradeManager::performSell(Trade trade){
+void PaperTradeManager::performSell(Trade trade){
 	std::cout<<"Paper trade sell"<<std::endl;
 	this->virtual_bank->bankCredit(trade.quantity*trade.tick.close);
 	this->holdQuantity -= trade.quantity;

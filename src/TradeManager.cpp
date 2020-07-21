@@ -49,7 +49,7 @@ int TradeManager::performSellInternal(Trade trade){
 
 }
 
-int TradeManager::dumpTrades(){
+void TradeManager::dumpTrades(){
 	std::cout<<"Printing all the trades"<<std::endl;
 	std::cout<<std::endl;
 	for(auto trade: this->trades){
@@ -57,5 +57,4 @@ int TradeManager::dumpTrades(){
 		std::cout<<std::endl;
 	}
 	std::cout<<std::endl;
-
 }

@@ -1,0 +1,9 @@
+CurrencyConversions.cpp
+PaperTradeManager.cpp
+RandomBuySellStrategy.cpp
+RandomTickManager.cpp
+Tick.cpp
+TradeManager.cpp
+VirutalBank.cpp
+YahooFinanceFileTickManager.cpp
+main.cpp
