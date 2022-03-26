@@ -3,7 +3,7 @@ CC := g++ # This is the main compiler
 SRCDIR := src
 BUILDDIR := build
 TARGET := bin/aku
- 
+
 SRCEXT := cpp
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
@@ -13,6 +13,7 @@ INC := -I include
 
 $(TARGET): $(OBJECTS)
 	@echo " Linking..."
+	@mkdir bin
 	@echo " $(CC) $^ -o $(TARGET) $(LIB)"; $(CC) $^ -o $(TARGET) $(LIB)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
