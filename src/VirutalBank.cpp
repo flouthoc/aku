@@ -1,34 +1,32 @@
-#include <iostream>
 #include "VirtualBank.hpp"
+#include <iostream>
 
-VirtualBank::VirtualBank(long double startingBalance){
-	this->totalBalance = startingBalance;
+VirtualBank::VirtualBank(long double startingBalance) {
+  this->totalBalance = startingBalance;
 }
 
-bool VirtualBank::bankCredit(long double amount){
-	this->totalBalance += amount;
-	return true;
+bool VirtualBank::bankCredit(long double amount) {
+  this->totalBalance += amount;
+  return true;
 }
 
-bool VirtualBank::bankCanDebit(long double amount){
-	
-	if(this->totalBalance >= amount){
-		return true;
-	}
+bool VirtualBank::bankCanDebit(long double amount) {
 
-	return false;	
+  if (this->totalBalance >= amount) {
+    return true;
+  }
+
+  return false;
 }
 
-bool VirtualBank::bankDebit(long double amount){
+bool VirtualBank::bankDebit(long double amount) {
 
-	if(this->totalBalance >= amount){
-		this->totalBalance -= amount;
-		return true;
-	}
+  if (this->totalBalance >= amount) {
+    this->totalBalance -= amount;
+    return true;
+  }
 
-	return false;
+  return false;
 }
 
-long double VirtualBank::getBankBalance(){
-	return this->totalBalance;
-}
+long double VirtualBank::getBankBalance() { return this->totalBalance; }
